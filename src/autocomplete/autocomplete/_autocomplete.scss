@@ -1,0 +1,107 @@
+$color: #404040;
+$font-size: 14px;
+$border-color: #ced4da;
+
+.autocomplete-wrapper {
+    position: relative;
+    font-size: $font-size;
+    color: $color;
+    line-height: 20px;
+
+    .autocomplete-arrow {
+        border-color: transparent transparent $border-color;
+        border-width: 0 5px 5px;
+        border-style: solid;
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .autocomplete-input {
+        width: 100%;
+        display: block;
+        color: $color;
+        border: 1px solid $border-color;
+        padding: 6px 25px 6px 8px;
+
+        &:focus {
+            border-color: #53bbff;
+        }
+
+        &::-ms-clear {
+            display: none;
+        }
+    }
+
+    .autocomplete-list-wrapper {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        top: 100%;
+        border-color: $border-color;
+        border-style: solid;
+        border-width: 0 1px 0px 1px;
+
+        .autocomplete-list {
+            border-bottom: 1px solid $border-color;
+
+            .autocomplete-list-scroll {
+                max-height: 240px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+        }
+
+        .autocomplete-item {
+            background-color: #fff;
+            padding: 6px 8px;
+            cursor: pointer;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &.hovered {
+                background-color: #49a7e2;
+                color: #ffffff;
+            }
+        }
+
+        .autocomplete-item-info {
+            font-size: 10px;
+            line-height: 10px;
+            white-space: pre-wrap;
+        }
+    }
+
+    .text-muted{
+        color: grey;
+    }
+
+    &.autocomplete-list-close {
+        .autocomplete-item-external {
+            border-bottom: 1px solid $border-color;
+
+            &:hover {
+                background-color: #49a7e2;
+                color: #ffffff;
+            }
+        }
+
+        .autocomplete-arrow {
+            border-color: $border-color transparent transparent;
+            border-width: 5px 5px 2.5px;
+        }
+    }
+
+    &.autocomplete-error {
+        .autocomplete-input {
+            border-color: red;
+        }
+
+        .autocomplete-validation {
+            color: red;
+            text-align: right;
+        }
+    }
+}

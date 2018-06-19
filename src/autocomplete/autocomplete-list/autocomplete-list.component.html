@@ -1,0 +1,16 @@
+<div class="autocomplete-list" role="listbox">
+    <div class="autocomplete-item text-muted" *ngIf="displayedItems.length == 0">Не найдено</div>
+
+    <div class="autocomplete-list-scroll" #autocompleteScroll>
+        <div class="autocomplete-item" role="option"
+             *ngFor="let item of displayedItems; let ind = index"
+             (click)="selectItem(item)"
+             (mouseover)="onMouseover(ind)"
+             [ngClass]="{hovered: ind == hoveredIndex}">
+            {{ ind }} - {{ item.value }}
+        </div>
+    </div>
+
+    <div class="autocomplete-item autocomplete-item-info text-muted"
+         *ngIf="counter.displayed < counter.filtered">Показано {{ counter.displayed }} из {{ counter.filtered }}.<br />Уточните запрос, чтобы увидеть остальное</div>
+</div>

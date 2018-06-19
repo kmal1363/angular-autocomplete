@@ -1,0 +1,30 @@
+<h1 class="a-center page-title">Autocomplete</h1>
+
+<div class="row">
+    <div class="col-sm-4">
+        <autocomplete [options]="options.staticItems"></autocomplete>
+        <p>Передаем в компонент города, фильтрует сам компонент</p>
+    </div>
+
+    <div class="col-sm-4">
+        <autocomplete [filterItems]="server.items40"></autocomplete>
+        <p>40 городов, фильтрует сервер</p>
+    </div>
+
+    <div class="col-sm-4">
+        <autocomplete [filterItems]="server.time300"></autocomplete>
+        <p>Фильтрует сервер, запрос 300ms</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <autocomplete [filterItems]="server.time800"></autocomplete>
+        <p>Фильтрует сервер, запрос 800ms</p>
+    </div>
+
+    <div class="col-sm-4">
+        <autocomplete [filterItems]="server.withError"></autocomplete>
+        <p>Фильтрует сервер 200ms, вернет ошибку через раз</p>
+    </div>
+</div>
