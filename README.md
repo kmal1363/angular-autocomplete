@@ -1,4 +1,3 @@
-# Client part for MS Reference
 ## Project deployment
 
 * Installing project dependencies:
