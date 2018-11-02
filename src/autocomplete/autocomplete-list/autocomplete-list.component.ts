@@ -19,6 +19,8 @@ export class AutocompleteListComponent implements AfterViewInit {
     @Output() select: EventEmitter<AutocompleteOption> = new EventEmitter<AutocompleteOption>();
     @Output() hoveredIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
+    @Input() showNotFound: boolean;
+
     @Input()
     set hoveredIndex(newIndex: number) {
         this._hoveredIndex = newIndex;

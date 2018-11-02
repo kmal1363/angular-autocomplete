@@ -21,6 +21,14 @@ export class FormComponent {
         staticItems: [],
     };
 
+    public values = {
+        time300: null,
+        time800: null,
+        items40: null,
+        withError: null,
+        staticItems: null
+    };
+
     constructor(
         private api: FormApiService,
     ) {
@@ -62,6 +70,6 @@ export class FormComponent {
     }
 
     parseCity(citiesFromServer) {
-        return citiesFromServer.map(item => ({id: item.Id, value: item.City}));
+        return citiesFromServer.map(item => item.City);
     }
 }

@@ -1,19 +1,15 @@
-import {AutocompleteOption} from './option';
-
 export class ItemsList {
-    private _items: AutocompleteOption[] = [];
+    private _items: string[] = [];
     private _hoveredIndex: number = -1;
-    private _filteredItems: AutocompleteOption[] = [];
+    private _filteredItems: string[] = [];
 
-    public displayedItems: AutocompleteOption[] = [];
-    public useAsSelect: boolean = false;
+    public displayedItems: string[] = [];
 
     constructor() {
     }
 
-    set items(data: AutocompleteOption[]) {
+    set items(data: string[]) {
         this._items = data;
-        this.useAsSelect = data.length <= 50;
         this.filteredItems = data;
     }
 
@@ -21,7 +17,7 @@ export class ItemsList {
         return this._items;
     }
 
-    set filteredItems(data: AutocompleteOption[]) {
+    set filteredItems(data: string[]) {
         this._filteredItems = data || [];
         this.setDisplayedItems();
         this.hoverFirst();
@@ -62,7 +58,7 @@ export class ItemsList {
     filter(filterString: string = '') {
         const searchData = filterString.toLowerCase();
         if (searchData) {
-            this.filteredItems = this._items.filter(item => item.id === searchData || item.value.toLowerCase().indexOf(searchData) > -1);
+            this.filteredItems = this._items.filter(item => item.includes(searchData));
         } else {
             this.filteredItems = this._items;
         }
@@ -70,12 +66,8 @@ export class ItemsList {
     }
 
     setDisplayedItems() {
-        if (this.useAsSelect) {
-            this.displayedItems = this.filteredItems;
-            return;
-        }
         const _filteredItems = this.filteredItems;
-        let displayedCount = _filteredItems.length > 20 ? 20 : _filteredItems.length;
+        const displayedCount = _filteredItems.length > 20 ? 20 : _filteredItems.length;
 
         this.displayedItems = _filteredItems.slice(0, displayedCount);
     }

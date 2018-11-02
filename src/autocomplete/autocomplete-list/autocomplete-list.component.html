@@ -1,5 +1,5 @@
 <div class="autocomplete-list" role="listbox">
-    <div class="autocomplete-item text-muted" *ngIf="displayedItems.length == 0">Не найдено</div>
+    <div class="autocomplete-item text-muted" *ngIf="showNotFound && displayedItems.length == 0">Не найдено</div>
 
     <div class="autocomplete-list-scroll" #autocompleteScroll>
         <div class="autocomplete-item" role="option"
@@ -7,7 +7,7 @@
              (click)="selectItem(item)"
              (mouseover)="onMouseover(ind)"
              [ngClass]="{hovered: ind == hoveredIndex}">
-            {{ ind }} - {{ item.value }}
+            {{ item }}
         </div>
     </div>
 

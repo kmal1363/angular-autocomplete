@@ -1,5 +1,5 @@
 <div class="autocomplete-wrapper"
-     [ngClass]="{'autocomplete-error': isError, 'autocomplete-list-close': !isOpenItemsList}">
+     [ngClass]="{'autocomplete-list-close': !isOpenItemsList}">
     <input type="text" autocomplete="off"
            #autocompleteInput
            class="autocomplete-input"
@@ -9,26 +9,15 @@
            (blur)="onInputBlur()"
            (focus)="onInputFocus()" />
 
-    <span class="autocomplete-arrow" *ngIf="useAsSelect" (click)="onClickArrow()"></span>
-
     <div class="autocomplete-list-wrapper">
         <div class="autocomplete-item autocomplete-item-external text-muted" *ngIf="isSearching&&loader.isShow">Загрузка...</div>
 
-        <div class="autocomplete-item autocomplete-item-info text-muted"
-             *ngIf="isShowRefreshOption">{{ refreshText }}</div>
-        <div class="autocomplete-item autocomplete-item-external"
-             *ngIf="isShowRefreshOption"
-             (click)="refresh()">Обновить</div>
-
         <autocomplete-list *ngIf="isOpenItemsList"
+                           [showNotFound]="showNotFound"
                            [filteredItems]="itemsList.filteredItems"
                            [displayedItems]="itemsList.displayedItems"
                            [hoveredIndex]="itemsList.hoveredIndex"
                            (hoveredIndexChange)="changeHoveredIndex($event)"
                            (select)="onClickItem($event)"></autocomplete-list>
-    </div>
-
-    <div class="autocomplete-validation" *ngIf="isError">
-        Выберите значение из списка
     </div>
 </div>

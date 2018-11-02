@@ -6,7 +6,6 @@ export enum KEYS {
 }
 
 export const DEFAULT_TEXTS = {
-    placeholderSelect: 'Введите или выберите из списка',
-    placeholder: 'Начните вводить код или название',
+    placeholder: 'Start typing...',
     refreshText: 'Что-то пошло не так. Проверьте соединение с интернетом и попробуйте еще раз.'
 }
